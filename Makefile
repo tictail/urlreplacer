@@ -1,12 +1,17 @@
-.PHONY: clean install flake8 test
+.PHONY: clean install flake8 test update_tlds
 
 clean:
 	@echo 'Cleaning .pyc and __pycache__ files'
 	$(shell find * -name "*.pyc" -delete)
 	$(shell find * -name "__pycache__" -delete)
+	$(shell find * -name ".cache" -delete)
 
 install: clean
 	pip install -r requirements.txt --allow-all-external
+
+update_tlds: clean
+	@echo 'Updating tlds from http://data.iana.org/TLD/tlds-alpha-by-domain.txt'
+	python update_tlds.py
 
 flake8: clean
 	flake8 .
