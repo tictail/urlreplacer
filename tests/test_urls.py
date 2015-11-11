@@ -31,6 +31,22 @@ def test_keep_http():
     assert urls('https://example.com') == '<https://example.com>'
 
 
+def test_must_start_with_word_character():
+    assert urls('.example.com') == '.example.com'
+
+
+def test_different_marker_func():
+    assert urls(
+        'example.com',
+        lambda a, b: u'<{}|{}>'.format(a, b)
+    ) == '<http://example.com|example.com>'
+
+    assert urls(
+        'https://example.com',
+        lambda a, b: u'<{}|{}>'.format(a, b)
+    ) == '<https://example.com|https://example.com>'
+
+
 def test_querystring():
     assert urls('example.com/test?a=b&g=1') == '<http://example.com/test?a=b&g=1>'
 

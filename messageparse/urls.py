@@ -8,42 +8,30 @@ import regex
 from .tlds import TLDs
 
 regex = regex.compile(
-    ur'(?<=^|\s)(http(?:s)?://)?([^/\s@]+)\.({})(\b)(\S*?)(?=$|\s|[,!\.\?]([\s]|$))'.format(
+    ur'(?<=^|\s)\b(http(?:s)?://)?([^/\s@]+)\.({})(\b)(\S*?)(?=$|\s|[,!\.\?]([\s]|$))'.format(
         ur'|'.join(TLDs())
     ),
     regex.IGNORECASE | regex.UNICODE | regex.MULTILINE
 )
 
 
-def make_replacer(use_labels):
+def make_replacer(marker_func):
 
     def replacer(matchobj):
         url = matchobj.group(0)
-        parts = list(urlsplit(url))
 
-        # Add the ? before the query
-        if parts[3]:
-            parts[3] = u'?' + parts[3]
+        if not matchobj.group(1):
+            url = u'http://' + url
 
-        label = u''
-
-        if use_labels:
-            label = u'|' + url
-
-        url = u'<{}://{}{}>'.format(
-            parts[0] or 'http',
-            u''.join(parts[1:]),
-            label
-        )
-
-        return url
+        return marker_func(url, matchobj.group(0))
 
     return replacer
 
 
-def urls(text, use_labels=False):
-    replacer = make_replacer(
-        use_labels=use_labels
-    )
+def urls(text, marker_func=None):
+    if marker_func is None:
+        marker_func = lambda a, b: u'<{}>'.format(a)
+
+    replacer = make_replacer(marker_func)
 
     return regex.sub(replacer, text)
