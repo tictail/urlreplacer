@@ -17,5 +17,5 @@ flake8: clean
 	flake8 .
 
 test: clean flake8
-	coverage run --source tokenize -m py.test tests/
+	coverage run --source messageparse -m py.test tests/
 	coverage report -m

@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from urlparse import urlsplit
-
 # Using pypi/regex instead because of http://bugs.python.org/issue1693050
 import regex
 
