@@ -5,6 +5,7 @@ clean:
 	$(shell find . -name "*.pyc" -delete)
 	$(shell find . -name "__pycache__" -delete)
 	$(shell find . -name ".cache" -exec /bin/rm -r {} +;)
+	$(shell /bin/rm -r dist/ urlreplacer.egg-info/)
 
 install: clean
 	pip install -r requirements.txt --allow-all-external
