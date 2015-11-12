@@ -36,7 +36,7 @@ By default it will surround all urls and emails with `<>`. But you can also supp
 Example:
 
 ```python
-def marker(parsed, original):
+def marker(a, b):
     return u'<a href="{}">{}</a>'.format(a, b)
 
 parsed_message = urls('Is this the website: example.com?', marker)
