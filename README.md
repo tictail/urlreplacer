@@ -1,11 +1,11 @@
 ## Library for parsing emails and urls from strings.
 
-To parse some text use `messageparse.urls` or/and `messageparse.emails` which parses emails and urls respectivly. It will only find urls and emails which has a known TLD; meaning example.com will match but example.ujh will not.
+To parse some text use `urlreplacer.urls` or/and `urlreplacer.emails` which parses emails and urls respectivly. It will only find urls and emails which has a known TLD; meaning example.com will match but example.ujh will not.
 
 ### Example:
 
 ```
-from messageparse import urls, emails
+from urlreplacer import urls, emails
 
 message = """Hi!
 Please try example.com/one.html, test.com or test.com/a/?b=1.
@@ -56,7 +56,7 @@ There is also a script for updating the list with known TLDs.
 
 - `make update_tlds`
 
-This will update the `messageparse/tlds.py` file with the latest list.
+This will update the `urlreplacer/tlds.py` file with the latest list.
 
 ### LICENCE
 
