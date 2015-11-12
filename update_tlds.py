@@ -43,7 +43,7 @@ def build_file(data):
 
 
 def write_file(new_file):
-    with codecs.open('messageparse/tlds.py', 'w', 'utf-8') as outfile:
+    with codecs.open('urlreplacer/tlds.py', 'w', 'utf-8') as outfile:
         outfile.write(new_file)
 
 

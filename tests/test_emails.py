@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from messageparse import emails
-from messageparse.tlds import TLDs
+from urlreplacer import emails
+from urlreplacer.tlds import TLDs
 
 
 def test_different_marker_func():

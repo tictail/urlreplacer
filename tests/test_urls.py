@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from messageparse import urls
-from messageparse.tlds import TLDs
+from urlreplacer import urls
+from urlreplacer.tlds import TLDs
 
 
 def test_parse_multiple():
