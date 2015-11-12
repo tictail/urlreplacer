@@ -1,10 +1,10 @@
-## Library for parsing emails and urls from strings.
+## Library for replacing emails and urls from plain text messages.
 
-To parse some text use `urlreplacer.urls` or/and `urlreplacer.emails` which parses emails and urls respectivly. It will only find urls and emails which has a known TLD; meaning example.com will match but example.ujh will not.
+To parse your text use `urlreplacer.urls` or/and `urlreplacer.emails`. They will only find urls and emails which has a known TLD; meaning example.com will match but example.ujh will not.
 
 ### Example:
 
-```
+```python
 from urlreplacer import urls, emails
 
 message = """Hi!
@@ -35,7 +35,7 @@ By default it will surround all urls and emails with `<>`. But you can also supp
 
 Example:
 
-```
+```python
 def marker(parsed, original):
     return u'<a href="{}">{}</a>'.format(a, b)
 
@@ -54,7 +54,7 @@ There is a makefile setup:
 
 There is also a script for updating the list with known TLDs.
 
-- `make update_tlds`
+- `$ make update_tlds`
 
 This will update the `urlreplacer/tlds.py` file with the latest list.
 
