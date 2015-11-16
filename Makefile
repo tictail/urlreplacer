@@ -1,4 +1,4 @@
-.PHONY: clean install flake8 test update_tlds
+.PHONY: clean install flake8 test update_tlds dist upload
 
 clean:
 	@echo 'Cleaning .pyc and __pycache__ files'
@@ -20,3 +20,9 @@ flake8: clean
 test: clean flake8
 	coverage run --source urlreplacer -m py.test tests/
 	coverage report -m
+
+dist: test
+	python setup.py sdist
+
+upload:
+	twine upload dist/*.tar.gz
