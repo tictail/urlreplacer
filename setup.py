@@ -9,7 +9,7 @@ with codecs.open('README.rst', 'r', 'utf-8') as readme:
 setup(
     name='urlreplacer',
     packages=['urlreplacer'],
-    version='0.1',
+    version='0.1.1',
     description='Find and replace URLs in plain text messages',
     long_description=long_description,
     license='MIT',
