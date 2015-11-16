@@ -6,7 +6,7 @@ import regex
 from .tlds import TLDs
 
 regex = regex.compile(
-    ur'(?<=^|\s)\b(mailto://)?([^/\s@]+)@([^/\s@]+)\.({})\b'.format(
+    ur'(?<=^|\s)\b(mailto:)?([^/\s@]+)@([^/\s@]+)\.({})\b'.format(
         ur'|'.join(TLDs())
     ),
     regex.IGNORECASE | regex.UNICODE | regex.MULTILINE
@@ -19,7 +19,7 @@ def make_replacer(marker_func):
         email = matchobj.group(0)
 
         if not matchobj.group(1):
-            email = u'mailto://' + email
+            email = u'mailto:' + email
 
         return marker_func(email, matchobj.group(0))
 
