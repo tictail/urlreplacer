@@ -35,6 +35,10 @@ def test_must_start_with_word_character():
     assert urls('.example.com') == '.example.com'
 
 
+def test_dont_add_marker_if_exists():
+    assert urls('<https://example.org>') == '<https://example.org>'
+
+
 def test_different_marker_func():
     assert urls(
         'example.com',
